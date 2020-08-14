@@ -1,0 +1,48 @@
+{
+  "name": "web-compile",
+  "version": "3.0.0",
+  "description": "",
+  "type": "module",
+  "bin": {
+    "web-compile": "./dist/cli.cjs",
+    "web-compile-dev": "./exports/cli.js"
+  },
+  "main": "./dist/node.cjs",
+  "exports": {
+    "import": "./dist/node.mjs",
+    "require": "./dist/node.cjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "build:dev": "yarn run:rollup && yarn run:webpack",
+    "build:dist": "yarn run:gulp",
+    "build": "yarn clean && yarn build:dev && yarn build:dist && yarn test",
+    "clean": "rm -rf ./dist/* && rm -rf ./dev/*",
+    "run:gulp": "yarn gulp -f .gnv/config.gulp.mjs",
+    "run:rollup": "yarn rollup -c .gnv/config.rollup.mjs",
+    "run:webpack": "yarn webpack --config .gnv/config.webpack.cjs",
+    "test": "yarn mocha"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "chai": "^4.2.0",
+    "commander": "^6.0.0",
+    "eslint": "^7.6.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-jsdoc": "^30.2.2",
+    "google-closure-compiler": "^20200719.0.0",
+    "google-closure-library": "^20200719.0.0",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.3.0",
+    "mocha": "^8.1.1",
+    "rollup": "^2.24.0",
+    "rollup-plugin-export-default": "^1.4.0",
+    "rollup-plugin-preserve-shebang": "^1.0.1",
+    "shebang-loader": "^0.0.1",
+    "webpack": "~4.44.1",
+    "webpack-cli": "~3.3.12"
+  },
+  "dependencies": {}
+}
